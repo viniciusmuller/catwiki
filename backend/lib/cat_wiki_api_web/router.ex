@@ -7,6 +7,8 @@ defmodule CatWikiAPIWeb.Router do
 
   scope "/api", CatWikiAPIWeb do
     pipe_through :api
+
+    get "/", BreedsController, :index
   end
 
   # Enables LiveDashboard only for development
