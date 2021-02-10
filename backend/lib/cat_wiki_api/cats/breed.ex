@@ -1,4 +1,5 @@
 defmodule CatWikiAPI.Cats.Breed do
+  @moduledoc "Breed schema"
   use Ecto.Schema
   import Ecto.Changeset
 
