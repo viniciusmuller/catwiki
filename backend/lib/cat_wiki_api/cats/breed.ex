@@ -18,7 +18,7 @@ defmodule CatWikiAPI.Cats.Breed do
     field :description, :string
     field :temperament, :string
     field :origin, :string
-    field :lifespan, :string
+    field :life_span, :string
     field :adaptability, :integer
     field :affection_level, :integer
     field :child_friendly, :integer

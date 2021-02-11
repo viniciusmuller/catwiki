@@ -10,7 +10,7 @@ defmodule CatWikiAPI.Repo.Migrations.CreateBreeds do
       add :description, :string
       add :temperament, :string
       add :origin, :string
-      add :lifespan, :string
+      add :life_span, :string
       add :adaptability, :integer
       add :affection_level, :integer
       add :child_friendly, :integer
