@@ -7,7 +7,7 @@ defmodule CatWikiAPI.Repo.Migrations.CreateBreeds do
       add :views, :integer
       add :name, :string
       add :image_url, :string
-      add :description, :string
+      add :description, :text
       add :temperament, :string
       add :origin, :string
       add :life_span, :string

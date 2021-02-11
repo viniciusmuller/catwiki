@@ -4,8 +4,8 @@ defmodule CatWikiAPI.Cats.Breed do
   import Ecto.Changeset
 
   @schema ~w(
-    views image_url description temperament origin
-    lifespan adaptability affection_level child_friendly
+    name views image_url description temperament origin
+    life_span adaptability affection_level child_friendly
     grooming intelligence health_issues social_needs
     stranger_friendly
   )a
@@ -14,6 +14,7 @@ defmodule CatWikiAPI.Cats.Breed do
   @foreign_key_type :binary_id
   schema "breeds" do
     field :views, :integer, default: 0
+    field :name, :string
     field :image_url, :string
     field :description, :string
     field :temperament, :string

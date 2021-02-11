@@ -12,4 +12,8 @@ defmodule CatWikiAPI.Services.CatAPI do
   def process_request_headers(headers) do
     Keyword.put(headers, :"x-api-key", @api_key)
   end
+
+  def process_response_body(body) do
+    Jason.decode!(body)
+  end
 end
