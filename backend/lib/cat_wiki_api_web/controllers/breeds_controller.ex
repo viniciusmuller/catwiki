@@ -1,8 +1,10 @@
 defmodule CatWikiAPIWeb.BreedsController do
   use CatWikiAPIWeb, :controller
 
+  alias CatWikiAPI.Cats
+
   def index(conn, _params) do
-    content = %{test: 42}
+    content = Cats.list_breeds()
     render(conn, "index.json", content: content)
   end
 end

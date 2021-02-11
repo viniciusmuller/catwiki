@@ -6,9 +6,25 @@ defmodule CatWikiAPI.CatsTest do
   describe "breeds" do
     alias CatWikiAPI.Cats.Breed
 
-    @valid_attrs %{breed: "some breed", views: 42}
-    @update_attrs %{breed: "some updated breed", views: 43}
-    @invalid_attrs %{breed: nil, views: nil}
+    @valid_attrs %{
+      adaptability: 5,
+      affection_level: 4,
+      child_friendly: 4,
+      description: "test",
+      grooming: 3,
+      health_issues: 1,
+      image_url: "https://awesomecattestimage.com/pngcat.png",
+      intelligence: 3,
+      life_span: "9 - 12",
+      name: "Aegean",
+      origin: "Greece",
+      social_needs: 4,
+      stranger_friendly: 4,
+      temperament: "happy",
+    }
+
+    @update_attrs %{name: "happycat"}
+    @invalid_attrs %{name: nil, description: nil}
 
     def breed_fixture(attrs \\ %{}) do
       {:ok, breed} =

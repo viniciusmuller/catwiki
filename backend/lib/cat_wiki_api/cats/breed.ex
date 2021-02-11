@@ -10,6 +10,7 @@ defmodule CatWikiAPI.Cats.Breed do
     stranger_friendly
   )a
 
+  @derive {Jason.Encoder, only: @schema}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "breeds" do

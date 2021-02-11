@@ -1,7 +1,7 @@
 defmodule CatWikiAPIWeb.BreedsView do
   use CatWikiAPIWeb, :view
 
-  def render("index.json", %{content: test}) do
-    %{test: test.test}
+  def render("index.json", %{content: breeds_list}) do
+    breeds_list
   end
 end
