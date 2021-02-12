@@ -41,6 +41,14 @@ defmodule CatWikiAPI.Cats do
     Repo.get_by!(Breed, name: name)
   end
 
+  @spec query_breeds(String.t) :: list
+  def query_breeds(query) do
+    Repo.all(
+      from b in Breed,
+      where: ilike(b.name, ^"%#{query}%")
+    )
+  end
+
   @doc """
   Creates a breed.
 

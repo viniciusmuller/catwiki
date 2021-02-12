@@ -1,30 +1,16 @@
 defmodule CatWikiAPI.CatsTest do
   use CatWikiAPI.DataCase
 
-  alias CatWikiAPI.Cats
-
   describe "breeds" do
     alias CatWikiAPI.Cats.Breed
+    alias CatWikiAPI.Mocks
+    alias CatWikiAPI.Cats
 
-    @valid_attrs %{
-      name: "test kitten!",
-      origin: "Greece",
-      adaptability: 5,
-      affection_level: 4,
-      child_friendly: 4,
-      description: "test",
-      grooming: 3,
-      health_issues: 1,
-      intelligence: 3,
-      life_span: "9 - 12",
-      social_needs: 4,
-      stranger_friendly: 4,
-      temperament: "happy",
-      image_url: "https://awesomecattestimage.com/pngcat.png",
-    }
+    @valid_attrs Mocks.BreedStruct.get()
+    @breed_name @valid_attrs.name
 
     @update_attrs %{name: "happycat"}
-    @invalid_attrs %{name: nil, description: nil}
+    @invalid_attrs %{name: nil}
 
     def breed_fixture(attrs \\ %{}) do
       {:ok, breed} =
@@ -37,7 +23,7 @@ defmodule CatWikiAPI.CatsTest do
 
     test "list_breeds/0 returns all breeds" do
       breed = breed_fixture()
-      assert breed in Cats.list_breeds()
+      assert Cats.list_breeds() == [breed]
     end
 
     test "get_breed!/1 returns the breed with given id" do
@@ -47,7 +33,7 @@ defmodule CatWikiAPI.CatsTest do
 
     test "create_breed/1 with valid data creates a breed" do
       assert {:ok, %Breed{} = breed} = Cats.create_breed(@valid_attrs)
-      assert breed.name == "test kitten!"
+      assert breed.name == @breed_name
       assert breed.views == 0
     end
 

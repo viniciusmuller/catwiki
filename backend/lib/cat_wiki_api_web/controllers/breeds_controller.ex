@@ -3,6 +3,11 @@ defmodule CatWikiAPIWeb.BreedsController do
 
   alias CatWikiAPI.Cats
 
+  def index(conn, %{"q" => query}) do
+    matching_breeds = Cats.query_breeds(query)
+    render(conn, "index.json", content: matching_breeds)
+  end
+
   def index(conn, _params) do
     content = Cats.list_breeds()
     render(conn, "index.json", content: content)
