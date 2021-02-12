@@ -9,6 +9,7 @@ defmodule CatWikiAPIWeb.Router do
     pipe_through :api
 
     get "/breeds", BreedsController, :index
+    get "/breeds/:name", BreedsController, :show
   end
 
   # Enables LiveDashboard only for development
