@@ -5,11 +5,12 @@ defmodule CatWikiAPIWeb.ErrorViewTest do
   import Phoenix.View
 
   test "renders 404.json" do
-    assert render(CatWikiAPIWeb.ErrorView, "404.json", []) == %{errors: %{detail: "Not Found"}}
+    expected = %{errors: %{detail: "Not Found"}}
+    assert render(CatWikiAPIWeb.ErrorView, "404.json", []) == expected
   end
 
   test "renders 500.json" do
-    assert render(CatWikiAPIWeb.ErrorView, "500.json", []) ==
-             %{errors: %{detail: "Internal Server Error"}}
+    expected = %{errors: %{detail: "Internal Server Error"}}
+    assert render(CatWikiAPIWeb.ErrorView, "500.json", []) == expected
   end
 end

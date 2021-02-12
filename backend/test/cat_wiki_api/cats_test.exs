@@ -7,20 +7,20 @@ defmodule CatWikiAPI.CatsTest do
     alias CatWikiAPI.Cats.Breed
 
     @valid_attrs %{
+      name: "test kitten!",
+      origin: "Greece",
       adaptability: 5,
       affection_level: 4,
       child_friendly: 4,
       description: "test",
       grooming: 3,
       health_issues: 1,
-      image_url: "https://awesomecattestimage.com/pngcat.png",
       intelligence: 3,
       life_span: "9 - 12",
-      name: "Aegean",
-      origin: "Greece",
       social_needs: 4,
       stranger_friendly: 4,
       temperament: "happy",
+      image_url: "https://awesomecattestimage.com/pngcat.png",
     }
 
     @update_attrs %{name: "happycat"}
@@ -37,7 +37,7 @@ defmodule CatWikiAPI.CatsTest do
 
     test "list_breeds/0 returns all breeds" do
       breed = breed_fixture()
-      assert Cats.list_breeds() == [breed]
+      assert breed in Cats.list_breeds()
     end
 
     test "get_breed!/1 returns the breed with given id" do
@@ -47,8 +47,8 @@ defmodule CatWikiAPI.CatsTest do
 
     test "create_breed/1 with valid data creates a breed" do
       assert {:ok, %Breed{} = breed} = Cats.create_breed(@valid_attrs)
-      assert breed.breed == "some breed"
-      assert breed.views == 42
+      assert breed.name == "test kitten!"
+      assert breed.views == 0
     end
 
     test "create_breed/1 with invalid data returns error changeset" do
@@ -58,8 +58,7 @@ defmodule CatWikiAPI.CatsTest do
     test "update_breed/2 with valid data updates the breed" do
       breed = breed_fixture()
       assert {:ok, %Breed{} = breed} = Cats.update_breed(breed, @update_attrs)
-      assert breed.breed == "some updated breed"
-      assert breed.views == 43
+      assert breed.name == "happycat"
     end
 
     test "update_breed/2 with invalid data returns error changeset" do
