@@ -7,7 +7,7 @@ defmodule CatWikiAPI.Cats.Breed do
     name views image_url description temperament origin
     life_span adaptability affection_level child_friendly
     grooming intelligence health_issues social_needs
-    stranger_friendly
+    stranger_friendly cat_api_id
   )a
 
   @derive {Jason.Encoder, only: @schema}
@@ -15,6 +15,7 @@ defmodule CatWikiAPI.Cats.Breed do
   @foreign_key_type :binary_id
   schema "breeds" do
     field :views, :integer, default: 0
+    field :cat_api_id, :string
     field :name, :string
     field :image_url, :string
     field :description, :string

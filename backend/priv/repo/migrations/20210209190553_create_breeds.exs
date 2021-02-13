@@ -4,6 +4,7 @@ defmodule CatWikiAPI.Repo.Migrations.CreateBreeds do
   def change do
     create table(:breeds, primary_key: false) do
       add :id, :binary_id, primary_key: true
+      add :cat_api_id, :string
       add :views, :integer
       add :name, :string
       add :image_url, :string
