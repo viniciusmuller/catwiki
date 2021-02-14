@@ -10,6 +10,7 @@ defmodule CatWikiAPIWeb.Router do
 
     get "/breeds", BreedsController, :index
     get "/breeds/:name", BreedsController, :show
+    get "/images/:breed", ImagesController, :show
   end
 
   # Enables LiveDashboard only for development

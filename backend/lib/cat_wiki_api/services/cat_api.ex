@@ -4,6 +4,11 @@ defmodule CatWikiAPI.Services.CatAPI do
   @endpoint "https://api.thecatapi.com/v1"
   @api_key ""
 
+  def get_breed_images(breed_id, limit) do
+    opts = %{breed_ids: breed_id, limit: limit}
+    get("/images/search", [], params: opts)
+  end
+
   def process_url(url) do
     @endpoint <> url
   end
