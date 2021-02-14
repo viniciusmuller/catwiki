@@ -15,37 +15,39 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  test "get /breeds list all breeds", %{conn: conn} do
-    route = Routes.breeds_path(conn, :index)
+  describe "get /breeds" do
+    test "/ - list all breeds", %{conn: conn} do
+      route = Routes.breeds_path(conn, :index)
 
-    response = get_route_200(conn, route)
-    assert is_list(response)
-  end
+      response = get_route_200(conn, route)
+      assert is_list(response)
+    end
 
-  test "get /breeds/:name returns the desired cat breed", %{conn: conn} do
-    route = Routes.breeds_path(conn, :show, "cat")
+    test "/:name - returns the desired cat breed", %{conn: conn} do
+      route = Routes.breeds_path(conn, :show, "cat")
 
-    response = get_route_200(conn, route)
-    assert response["views"] == 1
-  end
+      response = get_route_200(conn, route)
+      assert response["views"] == 1
+    end
 
-  test "get /breeds?q={query} can search for cat breeds", %{conn: conn} do
-    route = Routes.breeds_path(conn, :index, q: "cat")
+    test "?q={query} - can search for cat breeds", %{conn: conn} do
+      route = Routes.breeds_path(conn, :index, q: "cat")
 
-    response = get_route_200(conn, route)
+      response = get_route_200(conn, route)
 
-    assert is_list(response)
-    assert length(response) == 2
-  end
+      assert is_list(response)
+      assert length(response) == 2
+    end
 
-  test "get request on a breed increase its views", %{conn: conn} do
-    route = Routes.breeds_path(conn, :show, "cat")
+    test "/:name - request on a breed increase its views", %{conn: conn} do
+      route = Routes.breeds_path(conn, :show, "cat")
 
-    response = get_route_200(conn, route)
-    assert response["views"] == 1
+      response = get_route_200(conn, route)
+      assert response["views"] == 1
 
-    response = get_route_200(conn, route)
-    assert response["views"] == 2
+      response = get_route_200(conn, route)
+      assert response["views"] == 2
+    end
   end
 
   defp get_route_200(conn, route) do
