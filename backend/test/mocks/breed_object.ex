@@ -5,7 +5,7 @@ defmodule CatWikiAPI.Mocks.BreedStruct do
     %{
       name: "mock kitten",
       origin: "greece",
-      cat_api_id: "abcd",
+      cat_api_id: "abys",
       affection_level: 4,
       child_friendly: 4,
       description: "test",

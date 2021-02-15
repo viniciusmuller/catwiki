@@ -13,7 +13,6 @@ defmodule CatWikiAPIWeb.ImagesControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  # TODO: make those pass
   describe "get /images/:breed_name" do
     test "returns a list of images url", %{conn: conn} do
       route = Routes.images_path(conn, :show, @valid_breed_name)
