@@ -1,19 +1,10 @@
 # CatWikiAPI
 
-To start your Phoenix server:
+This REST API was made using `Elixir v11.1.3`, `Phoenix v1.5.7`, integrating [CatAPI](https://thecatapi.com/)  and following a test driven development strategy.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+Design choices:
+  - Requests to the CatAPI:
+    Since the CatAPI don't have a really large database, we already seed our database with some data from the API, in order to deliver faster responses.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  - Breeds image fetching:
+    Storing cat images into our database is not viable, so we need to request the images directly from CatAPI, increasing the response time on the `/images` endpoint.
