@@ -14,7 +14,7 @@ defmodule CatWikiAPIWeb.BreedsController do
   end
 
   def show(conn, %{"name" => name}) do
-    cat_data = Cats.get_breed_by_name!(name)
+    cat_data = Cats.get_breed_by_name(name)
 
     increased_views = %{views: cat_data.views + 1}
     {:ok, cat_data} = Cats.update_breed(cat_data, increased_views)

@@ -37,8 +37,8 @@ defmodule CatWikiAPI.Cats do
   """
   def get_breed!(id), do: Repo.get!(Breed, id)
 
-  def get_breed_by_name!(name) do
-    Repo.get_by!(Breed, name: name)
+  def get_breed_by_name(name) do
+    Repo.get_by(Breed, name: name)
   end
 
   @spec query_breeds(String.t) :: list

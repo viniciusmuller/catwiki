@@ -29,11 +29,11 @@ defmodule CatWikiAPIWeb.ImagesControllerTest do
       assert length(response) == 2
     end
 
-    test "unexistent breed name returns an error", %{conn: conn} do
+    test "unexistent breed name returns an empty list", %{conn: conn} do
       route = Routes.images_path(conn, :show, @invalid_breed_name)
-      response = get_route(conn, route, :not_found)
+      response = get_route(conn, route)
 
-      assert response == %{error: "Invalid breed name"}
+      assert response == []
     end
   end
 
