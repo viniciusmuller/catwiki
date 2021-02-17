@@ -6,6 +6,13 @@ defmodule CatWikiAPIWeb.ImagesController do
 
   @default_images_limit 5
 
+  # {
+  # @api {get} images/:name?[limit] 1. Get images from a breed
+  # @apiGroup Images
+  # @apiParam {String} name The name of the breed (e.g: Persian).
+  # @apiParam {Number} limit Max image limit (Optional) (Default: 5)
+  # @apiSuccess {List} imagesUrl JSON list containing image urls from the breed.
+  # }
   def show(conn, %{"breed" => breed_name} = params) do
     breed = Cats.get_breed_by_name(breed_name)
     images = fetch_images(breed, params["limit"])

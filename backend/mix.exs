@@ -3,6 +3,7 @@ defmodule CatWikiAPI.MixProject do
 
   def project do
     [
+      apidoc: apidoc(),
       app: :cat_wiki_api,
       version: "0.1.0",
       elixir: "~> 1.7",
@@ -43,7 +44,8 @@ defmodule CatWikiAPI.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:mix_apidoc, "~> 0.5.2"}
     ]
   end
 
@@ -59,6 +61,20 @@ defmodule CatWikiAPI.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+    ]
+  end
+
+  defp apidoc() do
+    [
+      url: "/",
+      sampleUrl: "/",
+      name: "CatWiki API",
+      version: "1.0.0",
+      description: "REST API for the CatWiki project.",
+      title: "CatWiki API",
+      input_dir: Path.join(~w"lib cat_wiki_api_web controllers"),
+      output_dir: Path.join(~w"priv static docs"),
+      apidoc_bin: "apidoc"
     ]
   end
 end
