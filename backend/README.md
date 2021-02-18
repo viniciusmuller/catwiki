@@ -2,6 +2,8 @@
 
 This REST API was made using `Elixir v11.1.3`, `Phoenix v1.5.7`, integrating [CatAPI](https://thecatapi.com/)  and following a test driven development strategy.
 
+The documentation for the API is generated using [apidoc](https://apidocjs.com/).
+
 Design choices:
   - Requests to the CatAPI:
     Since the CatAPI don't have a really large database, we already seed our database with some data from the API, in order to deliver faster responses.
