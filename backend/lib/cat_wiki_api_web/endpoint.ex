@@ -18,9 +18,7 @@ defmodule CatWikiAPIWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :cat_wiki_api,
-    gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    from: :cat_wiki_api
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
