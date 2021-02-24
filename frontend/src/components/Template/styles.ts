@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AppWrapper = styled.div`
+const Wrapper = styled.div`
   min-height: 100vh;
   padding: 0 4rem;
 
@@ -20,4 +20,4 @@ export const AppWrapper = styled.div`
   }
 `;
 
-export default 1;
+export default Wrapper;
