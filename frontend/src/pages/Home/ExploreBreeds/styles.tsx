@@ -4,8 +4,7 @@ import HomeImageLg from '~/assets/img/HeroImagelg.png';
 
 export const CatBreedSuggestions = styled.div`
   background-color: #e3e1dc;
-  width: 100%;
-  height: 15rem;
+  padding: 2rem;
 
   border-radius: 0 0 2rem 2rem;
 `;
@@ -43,4 +42,24 @@ export const BreedsInput = styled.input`
   border: none;
 
   font-size: 1.2rem;
+`;
+
+export const BreedsToDiscoverText = styled.h1`
+  color: #291507;
+  font-size: 2.5rem;
+  margin: 0;
+`;
+
+export const SeeMoreLink = styled.a`
+  color: rgba(41, 21, 7, 0.6);
+  text-transform: uppercase;
+  font-weight: bold;
+`;
+
+export const ImagesWrapper = styled.div`
+  margin-top: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 `;

@@ -7,7 +7,12 @@ import {
   ContentText,
   BreedsInput,
   CatBreedSuggestions,
+  ImagesWrapper,
+  BreedsToDiscoverText,
+  SeeMoreLink,
 } from './styles';
+
+import CatCard from './CatCard';
 
 function ExploreBreeds() {
   return (
@@ -18,8 +23,17 @@ function ExploreBreeds() {
         <BreedsInput placeholder="Enter your breed" />
       </ContentWrapper>
       <CatBreedSuggestions>
-        <h1>66+ Breeds For You to discover</h1>
-        <h3>See more ⟶</h3>
+        <div style={{ color: '#291507' }}>
+          <BreedsToDiscoverText>
+            66+ Breeds For you to discover
+          </BreedsToDiscoverText>
+          <SeeMoreLink>See more ⟶</SeeMoreLink>
+          <ImagesWrapper>
+            <CatCard name="antonio" url="https://github.com/arcticlimer.png" />
+            <CatCard name="antonio" url="https://github.com/arcticlimer.png" />
+            <CatCard name="antonio" url="https://github.com/arcticlimer.png" />
+          </ImagesWrapper>
+        </div>
       </CatBreedSuggestions>
     </>
   );
