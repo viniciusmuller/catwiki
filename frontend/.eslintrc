@@ -20,6 +20,8 @@
         "peerDependencies": false
       }
     ],
+    "no-unused-vars": 1,
+    "import/prefer-default-export": 1,
     "max-len": [
       "warn",
       {

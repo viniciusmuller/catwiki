@@ -1,11 +1,14 @@
 import React from 'react';
-import { Div } from './styles';
+import { HomeWrapper } from './styles';
+
+import ExploreBreeds from './ExploreBreeds';
 
 function Home() {
   return (
-    <Div>
-      <p>aaaa</p>
-    </Div>
+    <HomeWrapper>
+      <ExploreBreeds />
+      {/* <AboutCats /> */}
+    </HomeWrapper>
   );
 }
 

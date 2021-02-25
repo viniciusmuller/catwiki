@@ -13,7 +13,7 @@ function Footer() {
         <FooterLink href="https://github.com/arcticlimer">
           arcticlimer
         </FooterLink>{' '}
-        - devChallenge.io 2021
+        - devchallenges.io 2021
       </FooterText>
     </AppFooter>
   );

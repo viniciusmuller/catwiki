@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-export const Div = styled.div`
-  background-color: #444;
+export const HomeWrapper = styled.div`
   width: 100%;
-  height: 30rem;
-`;
 
-export default 1;
+  margin-bottom: 5rem;
+  border-radius: 2rem 2rem 0 0;
+`;
