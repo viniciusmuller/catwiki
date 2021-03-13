@@ -7,6 +7,11 @@ defmodule CatWikiAPIWeb.ErrorView do
   #   %{errors: %{detail: "Internal Server Error"}}
   # end
 
+  def render("404.json", _assigns) do
+    url = CatWikiAPIWeb.Endpoint.url()
+    %{error: "Not found", help: "See the docs at #{url}/docs/index.html"}
+  end
+
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes
   # "Not Found".

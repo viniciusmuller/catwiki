@@ -5,7 +5,8 @@ defmodule CatWikiAPIWeb.ErrorViewTest do
   import Phoenix.View
 
   test "renders 404.json" do
-    expected = %{errors: %{detail: "Not Found"}}
+    url = CatWikiAPIWeb.Endpoint.url()
+    expected = %{error: "Not found", help: "See the docs at #{url}/docs/index.html"}
     assert render(CatWikiAPIWeb.ErrorView, "404.json", []) == expected
   end
 
