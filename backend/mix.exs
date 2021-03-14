@@ -45,7 +45,8 @@ defmodule CatWikiAPI.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 1.8"},
-      {:mix_apidoc, "~> 0.5.2"}
+      {:mix_apidoc, "~> 0.5.2"},
+      {:cors_plug, "~> 2.0"}
     ]
   end
 
@@ -66,8 +67,8 @@ defmodule CatWikiAPI.MixProject do
 
   defp apidoc() do
     [
-      url: "/",
-      sampleUrl: "/",
+      url: "/api/",
+      sampleUrl: "/api/",
       name: "CatWiki API",
       version: "1.0.0",
       description: "REST API for the CatWiki project.",
