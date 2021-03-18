@@ -1,14 +1,17 @@
 import React from 'react';
 import { HomeWrapper } from './styles';
 
+import Template from '~/components/Template';
 import ExploreBreeds from './ExploreBreeds';
 
 function Home() {
   return (
-    <HomeWrapper>
-      <ExploreBreeds />
-      {/* <AboutCats /> */}
-    </HomeWrapper>
+    <Template>
+      <HomeWrapper>
+        <ExploreBreeds />
+        {/* <AboutCats /> */}
+      </HomeWrapper>
+    </Template>
   );
 }
 

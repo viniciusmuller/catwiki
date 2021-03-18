@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.ts';
 import { ReactComponent as AppLogo } from '~/assets/svg/CatwikiLogo.svg';
 
 import { AppFooter, FooterText, FooterLink } from './styles';
