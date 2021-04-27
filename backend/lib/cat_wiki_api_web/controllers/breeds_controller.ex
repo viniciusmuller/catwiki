@@ -28,10 +28,18 @@ defmodule CatWikiAPIWeb.BreedsController do
   # }
   def show(conn, %{"name" => name}) do
     cat_data = Cats.get_breed_by_name(name)
+    resolve_breed(conn, cat_data)
+  end
 
-    increased_views = %{views: cat_data.views + 1}
-    {:ok, cat_data} = Cats.update_breed(cat_data, increased_views)
+  defp resolve_breed(conn, nil) do
+    conn
+    |> put_status(:not_found)
+    |> render("breed_not_found.json")
+  end
 
-    render(conn, "show.json", content: cat_data)
+  defp resolve_breed(conn, breed) do
+    increased_views = %{views: breed.views + 1}
+    {:ok, breed} = Cats.update_breed(breed, increased_views)
+    render(conn, "show.json", content: breed)
   end
 end

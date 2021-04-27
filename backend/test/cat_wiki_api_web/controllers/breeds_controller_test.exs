@@ -19,21 +19,29 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
     test "/ - list all breeds", %{conn: conn} do
       route = Routes.breeds_path(conn, :index)
 
-      response = get_route_200(conn, route)
+      response = get_route(conn, route)
       assert is_list(response)
+      cat_names = Enum.map(@cats, fn cat -> cat.name end)
+      assert Enum.all?(response, fn cat -> cat["name"] in cat_names end)
+    end
+
+    test "/:name - returns 404 if the breed doesn't exist", %{conn: conn} do
+      route = Routes.breeds_path(conn, :show, "unexistent breed")
+
+      get_route(conn, route, :not_found)
     end
 
     test "/:name - returns the desired cat breed", %{conn: conn} do
       route = Routes.breeds_path(conn, :show, "cat")
 
-      response = get_route_200(conn, route)
+      response = get_route(conn, route)
       assert response["views"] == 1
     end
 
     test "?q={query} - can search for cat breeds", %{conn: conn} do
       route = Routes.breeds_path(conn, :index, q: "cat")
 
-      response = get_route_200(conn, route)
+      response = get_route(conn, route)
 
       assert is_list(response)
       assert length(response) == 2
@@ -42,15 +50,15 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
     test "/:name - request on a breed increase its views", %{conn: conn} do
       route = Routes.breeds_path(conn, :show, "cat")
 
-      response = get_route_200(conn, route)
+      response = get_route(conn, route)
       assert response["views"] == 1
 
-      response = get_route_200(conn, route)
+      response = get_route(conn, route)
       assert response["views"] == 2
     end
   end
 
-  defp get_route_200(conn, route) do
-    json_response(get(conn, route), :ok)
+  defp get_route(conn, route, status \\ :ok) do
+    json_response(get(conn, route), status)
   end
 end
