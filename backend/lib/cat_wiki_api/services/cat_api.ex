@@ -5,8 +5,10 @@ defmodule CatWikiAPI.Services.CatAPI do
   @api_key ""
 
   def get_breed_images(breed_id, limit) do
+    # hackey: [:insecure] is used to be able to make
+    # http requests while in github actions environment
     opts = %{breed_ids: breed_id, limit: limit}
-    get("/images/search", [], params: opts)
+    get("/images/search", [], params: opts, hackney: [:insecure])
   end
 
   def process_url(url) do
