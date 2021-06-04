@@ -4,10 +4,11 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
   alias CatWikiAPI.Mocks
 
   @mock_cat Mocks.BreedStruct.get()
+  @cat_name "cat"
   @cats [
-    %{@mock_cat | name: "cat"},
-    %{@mock_cat | name: "kittycat"},
-    %{@mock_cat | name: "woohoo"}
+    %{@mock_cat | cat_api_id: @cat_name, name: @cat_name},
+    %{@mock_cat | cat_api_id: "kittycat", name: "catfoo"},
+    %{@mock_cat | cat_api_id: "woohoo", name: "kitty"}
   ]
 
   setup %{conn: conn} do
@@ -22,6 +23,7 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
       response = get_route(conn, route)
       assert is_list(response)
       cat_names = Enum.map(@cats, fn cat -> cat.name end)
+
       assert Enum.all?(response, fn cat -> cat["name"] in cat_names end)
     end
 
@@ -32,14 +34,14 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
     end
 
     test "/:name - returns the desired cat breed", %{conn: conn} do
-      route = Routes.breeds_path(conn, :show, "cat")
+      route = Routes.breeds_path(conn, :show, @cat_name)
 
       response = get_route(conn, route)
       assert response["views"] == 1
     end
 
     test "?q={query} - can search for cat breeds", %{conn: conn} do
-      route = Routes.breeds_path(conn, :index, q: "cat")
+      route = Routes.breeds_path(conn, :index, q: @cat_name)
 
       response = get_route(conn, route)
 
@@ -48,7 +50,7 @@ defmodule CatWikiAPIWeb.BreedsControllerTest do
     end
 
     test "/:name - request on a breed increase its views", %{conn: conn} do
-      route = Routes.breeds_path(conn, :show, "cat")
+      route = Routes.breeds_path(conn, :show, @cat_name)
 
       response = get_route(conn, route)
       assert response["views"] == 1

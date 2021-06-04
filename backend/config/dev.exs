@@ -5,6 +5,7 @@ config :cat_wiki_api, CatWikiAPI.Repo,
   username: "postgres",
   password: "postgres",
   database: "cat_wiki_api_dev",
+  template: "template0",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

@@ -27,7 +27,7 @@ defmodule CatWikiAPIWeb.BreedsController do
   # @apiSuccess {Object} Breed JSON object containing details about the breed.
   # }
   def show(conn, %{"name" => name}) do
-    cat_data = Cats.get_breed_by_name(name)
+    cat_data = Cats.get_breed_by_api_name(name)
     resolve_breed(conn, cat_data)
   end
 

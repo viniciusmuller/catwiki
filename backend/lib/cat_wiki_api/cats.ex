@@ -37,15 +37,15 @@ defmodule CatWikiAPI.Cats do
   """
   def get_breed!(id), do: Repo.get!(Breed, id)
 
-  def get_breed_by_name(name) do
-    Repo.get_by(Breed, name: name)
+  def get_breed_by_api_name(name) do
+    Repo.get_by(Breed, cat_api_id: name)
   end
 
-  @spec query_breeds(String.t) :: list
+  @spec query_breeds(String.t()) :: list
   def query_breeds(query) do
     Repo.all(
       from b in Breed,
-      where: ilike(b.name, ^"%#{query}%")
+        where: ilike(b.name, ^"%#{query}%")
     )
   end
 

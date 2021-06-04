@@ -8,6 +8,7 @@ use Mix.Config
 config :cat_wiki_api, CatWikiAPI.Repo,
   username: "postgres",
   password: "postgres",
+  template: "template0",
   database: "cat_wiki_api_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

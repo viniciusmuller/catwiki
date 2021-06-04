@@ -3,7 +3,7 @@ defmodule CatWikiAPIWeb.ImagesControllerTest do
 
   alias CatWikiAPI.Mocks
 
-  @valid_breed_name "Abyssinian"
+  @valid_breed_name "abys"
   @invalid_breed_name "xyz"
 
   @mock_cat %{Mocks.BreedStruct.get() | name: @valid_breed_name}
