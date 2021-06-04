@@ -1,21 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Breed } from '~/types/breed';
 
-import { CatImage } from './styles';
+import { CatImage, CatName } from './styles';
 
-interface CatCardProps {
-  name: string;
-  url: string;
-  views: number;
-}
-
-function CatCard(props: CatCardProps) {
-  const { views, name, url } = props;
+function CatCard(props: Breed) {
+  const { name, imageUrl, catApiId } = props;
 
   return (
     <div>
-      <CatImage src={url} />
-      <h3>{name}</h3>
-      <p>{views} views</p>
+      <Link
+        style={{ textDecoration: 'none' }}
+        key={name}
+        to={`/breeds/${catApiId}`}
+      >
+        <CatImage src={imageUrl} />
+        <CatName>{name}</CatName>
+      </Link>
     </div>
   );
 }

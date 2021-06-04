@@ -37,11 +37,7 @@ function ExploreBreeds() {
           </BreedsToDiscoverText>
           <SeeMoreLink>See more ⟶</SeeMoreLink>
           <ImagesWrapper>
-            {cats.map((cat: Breed) => (
-              <Link key={cat.name} to={`/breeds/${cat.catApiId}`}>
-                <CatCard views={cat.views} name={cat.name} url={cat.imageUrl} />
-              </Link>
-            ))}
+            {cats.map((cat: Breed) => <CatCard {...cat} />).slice(0, 4)}
           </ImagesWrapper>
         </div>
       </CatBreedSuggestions>
