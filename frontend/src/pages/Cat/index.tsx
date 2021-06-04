@@ -18,15 +18,15 @@ function Cat() {
   useEffect(() => {
     catWikiAPI.get(`/breeds/${id}`).then((response) => {
       setBreedDetails(response.data);
-      console.log(response.data);
     });
   }, []);
 
-  // <BreedInfo />
+  if (!breedDetails) return <p>Error 404</p>;
+
   return (
     <Template>
-      <h1>{breedDetails?.name}</h1>
-      <OtherPhotos urls={['abc', 'dce']} />
+      <BreedInfo {...breedDetails} />
+      {/* <OtherPhotos urls={['abc', 'dce']} /> */}
     </Template>
   );
 }

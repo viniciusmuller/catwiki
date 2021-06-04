@@ -5,15 +5,17 @@ import { CatImage } from './styles';
 interface CatCardProps {
   name: string;
   url: string;
+  views: number;
 }
 
 function CatCard(props: CatCardProps) {
-  const { name, url } = props;
+  const { views, name, url } = props;
 
   return (
     <div>
       <CatImage src={url} />
       <h3>{name}</h3>
+      <p>{views} views</p>
     </div>
   );
 }

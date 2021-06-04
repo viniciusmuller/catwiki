@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { ReactComponent as AppLogo } from '~/assets/svg/CatwikiLogo.svg';
 import Footer from '~/components/Footer';
-
 import Wrapper from './styles';
 
 interface TemplateProps {
@@ -14,6 +12,7 @@ function Template(props: TemplateProps) {
 
   return (
     <Wrapper>
+      {/* TODO: Make link to main page here */}
       <AppLogo fill="#000" />
       {children}
       <Footer />

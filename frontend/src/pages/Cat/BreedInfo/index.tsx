@@ -1,20 +1,19 @@
 import React from 'react';
 import { BreedInfoContainer, BreedImage } from './styles';
 
-interface BreedInfoProps {
-  imageUrl: string;
-  description: string;
-}
+import { Breed } from '~/types/breed';
 
-function BreedInfo(props: BreedInfoProps) {
-  const { imageUrl } = props;
+function BreedInfo(props: Breed) {
+  const { name, description, temperament, lifeSpan } = props;
 
   return (
     <BreedInfoContainer>
-      <BreedImage src={imageUrl} alt="Breed" />
+      {/* <BreedImage src={imageUrl} alt="Breed" /> */}
       <div>
-        <h1>Cat Name</h1>
-        <p>xyzn</p>
+        <h1>{name}</h1>
+        <h2>{description}</h2>
+        <p>Temperament: {temperament}</p>
+        <p>Life span: {lifeSpan}</p>
       </div>
     </BreedInfoContainer>
   );

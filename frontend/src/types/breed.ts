@@ -13,4 +13,6 @@ export interface Breed {
   healthIssues: number;
   socialNeeds: number;
   strangerFriendly: number;
+  catApiId: string;
+  imageUrl: string;
 }

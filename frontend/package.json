@@ -9,6 +9,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
     "axios": "^0.21.1",
+    "axios-case-converter": "^0.7.0",
     "react": "^17.0.1",
     "react-app-rewire-alias": "^1.0.0",
     "react-app-rewired": "^2.1.8",

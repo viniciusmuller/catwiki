@@ -1,20 +1,28 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as AppLogo } from '~/assets/svg/CatwikiLogo.svg';
-
+import { catWikiAPI } from '~/services/catWikiApi';
+import { Breed } from '~/types/breed';
+import CatCard from './CatCard';
 import {
-  ContentWrapper,
-  ContentText,
   BreedsInput,
-  CatBreedSuggestions,
-  ImagesWrapper,
   BreedsToDiscoverText,
+  CatBreedSuggestions,
+  ContentText,
+  ContentWrapper,
+  ImagesWrapper,
   SeeMoreLink,
 } from './styles';
 
-import CatCard from './CatCard';
-
 function ExploreBreeds() {
+  const [cats, setCats] = useState<Breed[]>([]);
+
+  useEffect(() => {
+    catWikiAPI.get('/breeds').then((response) => setCats(response.data));
+  }, []);
+
+  cats.sort((a, b) => (a.views < b.views ? 1 : -1));
+
   return (
     <>
       <ContentWrapper>
@@ -29,9 +37,11 @@ function ExploreBreeds() {
           </BreedsToDiscoverText>
           <SeeMoreLink>See more ⟶</SeeMoreLink>
           <ImagesWrapper>
-            <CatCard name="antonio" url="https://github.com/arcticlimer.png" />
-            <CatCard name="antonio" url="https://github.com/arcticlimer.png" />
-            <CatCard name="antonio" url="https://github.com/arcticlimer.png" />
+            {cats.map((cat: Breed) => (
+              <Link key={cat.name} to={`/breeds/${cat.catApiId}`}>
+                <CatCard views={cat.views} name={cat.name} url={cat.imageUrl} />
+              </Link>
+            ))}
           </ImagesWrapper>
         </div>
       </CatBreedSuggestions>
